@@ -50,7 +50,12 @@ class SundayController extends Controller
         $sunday = Sunday::findOrFail($id);
         $sunday->status = $request->status;
         $sunday->save();
-        return response();
+        return response()->json(
+            [
+                "status" => 200,
+                "Sunday" => $sunday->all()
+            ]
+        );
 
     }
 
